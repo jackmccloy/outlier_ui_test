@@ -20,9 +20,9 @@ class LaunchesView extends Component {
       return <div> NO DATA </div>;
     }
 
-    let launches = [];
+    const launches = [];
 
-    for (let i = 0; i < launchCollection.launches.length; i++) {
+    for (let i = 0; i < launchCollection.launches.length; i+=1) {
       const launch = launchCollection.launches[i];
 
       launches.push(
