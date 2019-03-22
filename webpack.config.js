@@ -78,7 +78,8 @@ module.exports = {
         use: 'babel-loader'
       }
     ]
-  },  resolve: {
+  },
+  resolve: {
     extensions: ['.js', '.jsx'],
     modules: [
       path.join(__dirname, "src"),

@@ -1,7 +1,9 @@
 module.exports = {
   "env": {
     "es6": true,
-    "commonjs": true
+    "commonjs": true,
+    jest: true,
+    browser: true,
   },
   "parser": "babel-eslint",
   "parserOptions": {
