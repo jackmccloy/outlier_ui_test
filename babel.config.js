@@ -5,7 +5,13 @@ module.exports = (api) => {
     '@babel/env',
     '@babel/react',
   ];
-  const plugins = [];
+  const plugins = [
+    [
+      'babel-plugin-styled-components', {
+        displayName: true,
+      },
+    ],
+  ];
   return {
     presets,
     plugins,
