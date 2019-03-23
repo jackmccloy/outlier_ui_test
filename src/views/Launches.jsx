@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
+import { connect } from "react-redux";
+
 import styled from 'styled-components';
 
-import ConnectedView from './ConnectedView';
 import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
 
@@ -62,4 +63,15 @@ class LaunchesView extends Component {
   }
 }
 
-export default ConnectedView(LaunchesView, 'launches');
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  dispatch
+});
+
+const ConnectedLaunchesView = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LaunchesView);
+
+export default ConnectedLaunchesView;
