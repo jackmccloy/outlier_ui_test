@@ -57,7 +57,9 @@ class LaunchesView extends Component {
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => ({
+  launchCollection: state.launchCollection,
+});
 
 const mapDispatchToProps = dispatch => ({
   dispatch

@@ -39,21 +39,6 @@ module.exports = {
           'css-loader'
         ]
       },
-      { // handle sass
-        test: /\.sass$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
-          // {
-          //   loader: "sass-resources-loader",
-          //   options: {
-          //     resources: sassResourcesPaths
-          //   }
-          // }
-
-        ]
-      },
       { // process index alone as application root
         test: /\.html$/,
         use: "html-loader"
