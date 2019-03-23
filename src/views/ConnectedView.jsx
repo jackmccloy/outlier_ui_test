@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import Layout from './Layout';
 import Navigation from '../components/Navigation';
 
 const menu = Navigation();
@@ -16,9 +15,7 @@ function MasterLayoutHOC(WrappedComponent, pageName) {
       };
 
       return (
-        <Layout {...layoutProps}>
-          <WrappedComponent {...this.props} />
-        </Layout>
+        <WrappedComponent {...this.props} />
       );
     }
   }

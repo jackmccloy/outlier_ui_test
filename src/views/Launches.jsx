@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
+
+import styled from 'styled-components';
+
 import ConnectedView from './ConnectedView';
 import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
+
+const Section = styled.section`
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+`;
+
+const LaunchesH1 = styled.h1`
+  margin-top: 0;
+  border-bottom: 2px solid #999;
+  color: #666;
+`
 
 class LaunchesView extends Component {
   componentDidMount() {
@@ -39,10 +54,10 @@ class LaunchesView extends Component {
 
   render() {
     return (
-      <div>
-        <h2> SpaceX launches </h2>
+      <Section>
+        <LaunchesH1> SpaceX launches </LaunchesH1>
         {this.getContent()}
-      </div>
+      </Section>
     );
   }
 }
