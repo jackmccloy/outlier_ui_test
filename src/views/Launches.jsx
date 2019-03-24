@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import styled from 'styled-components';
 
-import { getLaunchesThunk } from "../actions/Launches";
+import { getLaunchesThunk } from "../actions/launches";
 import Launch from '../components/Launch';
 
 const Section = styled.section`
