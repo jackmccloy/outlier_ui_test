@@ -21,7 +21,7 @@ const RocketH1 = styled.h1`
   color: #666;
 `
 
-class RocketView extends Component {
+export class RocketView extends Component {
   componentDidMount() {
     const { getRockets } = this.props;
     getRockets();

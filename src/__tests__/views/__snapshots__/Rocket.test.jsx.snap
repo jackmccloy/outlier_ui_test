@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RocketView /> renders correctly after fetch error 1`] = `
+<section
+  className="Rocket__Section-sc-16sbiwh-0 eJKBUL"
+>
+  <h1
+    className="Rocket__RocketH1-sc-16sbiwh-1 kWMeDo"
+  >
+     SpaceX 
+  </h1>
+  <div>
+     
+    An error occured
+     
+  </div>
+</section>
+`;
+
+exports[`<RocketView /> renders correctly while fetching 1`] = `
+<section
+  className="Rocket__Section-sc-16sbiwh-0 eJKBUL"
+>
+  <h1
+    className="Rocket__RocketH1-sc-16sbiwh-1 kWMeDo"
+  >
+     SpaceX 
+  </h1>
+  <div>
+     LOADING... 
+  </div>
+</section>
+`;
+
+exports[`<RocketView /> renders correctly with data 1`] = `
+<section
+  className="Rocket__Section-sc-16sbiwh-0 eJKBUL"
+>
+  <h1
+    className="Rocket__RocketH1-sc-16sbiwh-1 kWMeDo"
+  >
+     SpaceX 
+    Falcon 1
+     
+  </h1>
+  <div>
+     
+    The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth.
+     
+  </div>
+  <div
+    className="ImagesArea__ImageGridContainer-sc-172rgwy-0 jaRxtm"
+  >
+    <div
+      className="ImagesArea__ImageContainer-sc-172rgwy-1 eWNNyX"
+    >
+      <a
+        href="https://www.spacex.com/sites/spacex/files/styles/media_gallery_large/public/2009_-_01_liftoff_south_full_wide_ro8a1280_edit.jpg?itok=8loiSGt1"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="Falcon 1 1 of 2"
+          src="https://www.spacex.com/sites/spacex/files/styles/media_gallery_large/public/2009_-_01_liftoff_south_full_wide_ro8a1280_edit.jpg?itok=8loiSGt1"
+        />
+      </a>
+    </div>
+    <div
+      className="ImagesArea__ImageContainer-sc-172rgwy-1 eWNNyX"
+    >
+      <a
+        href="https://www.spacex.com/sites/spacex/files/styles/media_gallery_large/public/2009_-_02_default_liftoff_west_full_wide_nn6p2062_xl.jpg?itok=p776nHsM"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="Falcon 1 2 of 2"
+          src="https://www.spacex.com/sites/spacex/files/styles/media_gallery_large/public/2009_-_02_default_liftoff_west_full_wide_nn6p2062_xl.jpg?itok=p776nHsM"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+`;

@@ -23,7 +23,7 @@ const LaunchH1 = styled.h1`
   color: #666;
 `
 
-class LaunchView extends Component {
+export class LaunchView extends Component {
   componentDidMount() {
     const { getLaunches } = this.props;
     getLaunches();
@@ -84,7 +84,7 @@ class LaunchView extends Component {
 LaunchView.propTypes = {
   launchCollection: PropTypes.shape({
     launches: PropTypes.arrayOf(PropTypes.shape({
-      flight_number: PropTypes.string.isRequired,
+      flight_number: PropTypes.number.isRequired,
       mission_name: PropTypes.string,
       launch_year: PropTypes.string,
       details: PropTypes.string,
