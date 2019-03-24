@@ -8,7 +8,7 @@ import Routes from './routes'
 
 import "../styles/base.css"  // Global styles
 
-import store from "./stores/Root";
+import store from "./stores/rootReducer";
 
 const renderApp = (Component) => {
   ReactDOM.render(

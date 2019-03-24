@@ -1,4 +1,4 @@
-import LaunchService from '../services/LaunchService';
+import { launchService } from '../services/SpaceXApi';
 
 import {
   REQUEST_LAUNCHES,
@@ -39,7 +39,7 @@ export const getLaunchesThunk = (forceRequest = false) => (dispatch, getState) =
   }
   dispatch(getLaunchesRequst());
 
-  return LaunchService.get()
+  return launchService.get()
     .then(response => {
       dispatch(receiveLaunches(response.data));
      }).catch(error => {

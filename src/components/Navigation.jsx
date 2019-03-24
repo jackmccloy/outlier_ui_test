@@ -40,6 +40,7 @@ const Navigation = () => (
   <Nav>
     <NavbarUl>
       <NavbarLi><Link to="/launches">Launches</Link></NavbarLi>
+      <NavbarLi><Link to="/rockets">Rockets</Link></NavbarLi>
     </NavbarUl>
   </Nav>
 );

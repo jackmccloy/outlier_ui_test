@@ -8,10 +8,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import thunk from 'redux-thunk';
 
-import launchCollection from './LaunchCollectionReducer';
+import launchCollection from './launchCollectionReducer';
+import rocketCollection from './rocketCollectionReducer';
 
 const rootReducer = combineReducers({
-  launchCollection
+  launchCollection,
+  rocketCollection,
 });
 
 const store = createStore(
