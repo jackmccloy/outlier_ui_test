@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import styled from 'styled-components'
 
 const ImageGridContainer = styled.div`
@@ -46,5 +48,10 @@ const ImagesArea = ({ images, title }) => {
     </ImageGridContainer>
   );
 }
+
+ImagesArea.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default ImagesArea;

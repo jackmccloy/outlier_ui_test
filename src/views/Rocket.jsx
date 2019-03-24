@@ -85,6 +85,11 @@ RocketView.propTypes = {
     error: PropTypes.string,
   }).isRequired,
   getRockets: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      rocket_id: PropTypes.string,
+    }),
+  }).isRequired,
 }
 
 const mapStateToProps = state => ({
