@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LaunchesView /> renders correctly after fetch error 1`] = `
+<section
+  className="Launches__Section-bz9y9k-0 ZCYpv"
+>
+  <h1
+    className="Launches__LaunchesH1-bz9y9k-1 iXoSyY"
+  >
+     SpaceX launches 
+  </h1>
+  <div>
+     
+    An error occured
+     
+  </div>
+</section>
+`;
+
+exports[`<LaunchesView /> renders correctly while fetching 1`] = `
+<section
+  className="Launches__Section-bz9y9k-0 ZCYpv"
+>
+  <h1
+    className="Launches__LaunchesH1-bz9y9k-1 iXoSyY"
+  >
+     SpaceX launches 
+  </h1>
+  <div>
+     LOADING... 
+  </div>
+</section>
+`;
+
+exports[`<LaunchesView /> renders correctly with data 1`] = `
+<section
+  className="Launches__Section-bz9y9k-0 ZCYpv"
+>
+  <h1
+    className="Launches__LaunchesH1-bz9y9k-1 iXoSyY"
+  >
+     SpaceX launches 
+  </h1>
+  <ul>
+    <li>
+      <h2>
+        Mission: 
+        <a
+          href="/launches/1"
+          onClick={[Function]}
+        >
+          FalconSat
+        </a>
+      </h2>
+      <div>
+         Rocket: 
+        <a
+          href="/rockets/falcon1"
+          onClick={[Function]}
+        >
+          Falcon 1
+        </a>
+      </div>
+    </li>
+    <li>
+      <h2>
+        Mission: 
+        <a
+          href="/launches/90"
+          onClick={[Function]}
+        >
+          ALINA
+        </a>
+      </h2>
+      <div>
+         Rocket: 
+        <a
+          href="/rockets/falcon9"
+          onClick={[Function]}
+        >
+          Falcon 9
+        </a>
+      </div>
+    </li>
+  </ul>
+</section>
+`;

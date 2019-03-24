@@ -21,7 +21,7 @@ const LaunchesH1 = styled.h1`
   color: #666;
 `
 
-class LaunchesView extends Component {
+export class LaunchesView extends Component {
   componentDidMount() {
     const { getLaunches } = this.props;
     getLaunches();

@@ -9,18 +9,18 @@ import {
 /**
  * Synchronous actions
  */
-const receiveRockets = rockets => ({
+export const receiveRockets = rockets => ({
   type: RECEIVE_ROCKETS,
   payload: {
     rockets,
   }
 });
 
-const getRocketsRequst = () => ({
+export const getRocketsRequest = () => ({
   type: REQUEST_ROCKETS,
 });
 
-const getRocketsFailure = errorMessage => ({
+export const getRocketsFailure = errorMessage => ({
   type: REQUEST_ROCKETS_FAILURE,
   payload: {
     errorMessage,
@@ -37,7 +37,7 @@ export const getRocketsThunk = (forceRequest = false) => (dispatch, getState) =>
     // store, we shouldn't re-fetch unless `forceRequest` is true
     return null;
   }
-  dispatch(getRocketsRequst());
+  dispatch(getRocketsRequest());
 
   return rocketService.get()
     .then(response => {

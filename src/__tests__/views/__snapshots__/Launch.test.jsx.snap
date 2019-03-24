@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LaunchesView /> renders correctly after fetch error 1`] = `
+<section
+  className="Launch__Section-sc-10cqa0r-0 iEYcVm"
+>
+  <h1
+    className="Launch__LaunchH1-sc-10cqa0r-1 fkUYmW"
+  >
+     SpaceX 
+  </h1>
+  <div>
+     
+    An error occured
+     
+  </div>
+</section>
+`;
+
+exports[`<LaunchesView /> renders correctly while fetching 1`] = `
+<section
+  className="Launch__Section-sc-10cqa0r-0 iEYcVm"
+>
+  <h1
+    className="Launch__LaunchH1-sc-10cqa0r-1 fkUYmW"
+  >
+     SpaceX 
+  </h1>
+  <div>
+     LOADING... 
+  </div>
+</section>
+`;
+
+exports[`<LaunchesView /> renders correctly with data 1`] = `
+<section
+  className="Launch__Section-sc-10cqa0r-0 iEYcVm"
+>
+  <h1
+    className="Launch__LaunchH1-sc-10cqa0r-1 fkUYmW"
+  >
+     SpaceX 
+    FalconSat
+    , 
+    2006
+  </h1>
+  <h2>
+     Rocket: 
+    <a
+      href="/rockets/falcon1"
+      onClick={[Function]}
+    >
+      Falcon 1
+    </a>
+  </h2>
+  <div>
+     
+    Engine failure at 33 seconds and loss of vehicle
+     
+  </div>
+</section>
+`;

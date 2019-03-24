@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RocketsView /> renders correctly after fetch error 1`] = `
+<section
+  className="Rockets__Section-sc-1c1yimr-0 sTKlT"
+>
+  <h1
+    className="Rockets__RocketsH1-sc-1c1yimr-1 kPXGys"
+  >
+     SpaceX rockets 
+  </h1>
+  <div>
+     
+    An error occured
+     
+  </div>
+</section>
+`;
+
+exports[`<RocketsView /> renders correctly while fetching 1`] = `
+<section
+  className="Rockets__Section-sc-1c1yimr-0 sTKlT"
+>
+  <h1
+    className="Rockets__RocketsH1-sc-1c1yimr-1 kPXGys"
+  >
+     SpaceX rockets 
+  </h1>
+  <div>
+     LOADING... 
+  </div>
+</section>
+`;
+
+exports[`<RocketsView /> renders correctly with data 1`] = `
+<section
+  className="Rockets__Section-sc-1c1yimr-0 sTKlT"
+>
+  <h1
+    className="Rockets__RocketsH1-sc-1c1yimr-1 kPXGys"
+  >
+     SpaceX rockets 
+  </h1>
+  <ul>
+    <li>
+      <h2>
+        <a
+          href="/rockets/falcon1"
+          onClick={[Function]}
+        >
+          Falcon 1
+        </a>
+      </h2>
+    </li>
+  </ul>
+</section>
+`;
