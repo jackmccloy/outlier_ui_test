@@ -24,9 +24,10 @@ const ImagesArea = ({ images, title }) => {
     return null;
   }
   const imageGrid = images.map((image, i) => (
-    <ImageContainer>
+    <ImageContainer
+      key={image}
+    >
       <a
-        key={image}
         href={image}
         target="_blank"
         rel="noopener noreferrer"
