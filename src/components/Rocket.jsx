@@ -2,9 +2,15 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 const Rocket = ({ rocket }) => (
   <li>
-    <h2> { rocket.rocket_name } </h2>
+    <h2>
+      <Link to={`/rockets/${rocket.rocket_id}`}>
+        { rocket.rocket_name }
+      </Link>
+    </h2>
   </li>
 );
 

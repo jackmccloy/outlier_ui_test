@@ -31,15 +31,21 @@ class LaunchesView extends Component {
     const { launchCollection } = this.props;
 
     if (!launchCollection || launchCollection.fetching) {
-      return <div> LOADING... </div>;
+      return (
+        <div> LOADING... </div>
+      );
     }
 
     if (launchCollection.error) {
-      return <div> { launchCollection.error } </div>
+      return (
+        <div> { launchCollection.error } </div>
+      );
     }
 
     if (!launchCollection.launches.length) {
-      return <div> NO DATA </div>;
+      return (
+        <div> NO DATA </div>
+      );
     }
 
     const launches = launchCollection.launches.map(launch => (
@@ -49,7 +55,9 @@ class LaunchesView extends Component {
       />
     ));
 
-    return <ul>{launches}</ul>;
+    return (
+      <ul>{launches}</ul>
+    );
   }
 
   render() {

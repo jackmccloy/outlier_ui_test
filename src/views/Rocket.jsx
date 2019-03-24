@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 
 import { getRocketsThunk } from "../actions/rockets";
-import Rocket from '../components/Rocket';
+import ImagesArea from '../components/ImagesArea';
 
 const Section = styled.section`
   flex: 1;
@@ -15,62 +15,68 @@ const Section = styled.section`
   padding: 20px;
 `;
 
-const RocketsH1 = styled.h1`
+const RocketH1 = styled.h1`
   margin-top: 0;
   border-bottom: 2px solid #999;
   color: #666;
 `
 
-class RocketsView extends Component {
+class RocketView extends Component {
   componentDidMount() {
     const { getRockets } = this.props;
     getRockets();
   }
 
-  rocketsArea() {
-    const { rocketCollection } = this.props;
+  render() {
+    const {
+      match,
+      rocketCollection,
+    } = this.props;
 
     if (!rocketCollection || rocketCollection.fetching) {
       return (
-        <div> LOADING... </div>
+        <Section>
+          <RocketH1> SpaceX </RocketH1>
+          <div> LOADING... </div>
+        </Section>
       );
     }
 
     if (rocketCollection.error) {
       return (
-        <div> { rocketCollection.error } </div>
+        <Section>
+          <RocketH1> SpaceX </RocketH1>
+          <div> { rocketCollection.error } </div>
+        </Section>
       );
     }
 
-    if (!rocketCollection.rockets.length) {
+    const rocketId = match.params.rocket_id;
+    const thisRocket = rocketCollection.rockets.filter(rocket => rocket.rocket_id === rocketId);
+
+    if (thisRocket.length !== 1) {
       return (
-        <div> NO DATA </div>
+        <Section>
+          <RocketH1> SpaceX </RocketH1>
+          <div> NO DATA </div>
+        </Section>
       );
     }
 
-    const rockets = rocketCollection.rockets.map(rocket => (
-      <Rocket
-        key={rocket.rocket_id}
-        rocket={rocket}
-      />
-    ));
-
-    return (
-      <ul>{rockets}</ul>
-    );
-  }
-
-  render() {
     return (
       <Section>
-        <RocketsH1> SpaceX rockets </RocketsH1>
-        {this.rocketsArea()}
+        <RocketH1> SpaceX { thisRocket[0].rocket_name } </RocketH1>
+        <div> { thisRocket[0].description } </div>
+        <ImagesArea
+          title={thisRocket[0].rocket_name}
+          images={thisRocket[0].flickr_images}
+        />
       </Section>
     );
   }
 }
 
-RocketsView.propTypes = {
+RocketView.propTypes = {
   rocketCollection: PropTypes.shape({
     rockets: PropTypes.arrayOf(PropTypes.shape({
       rocket_id: PropTypes.string,
@@ -89,9 +95,9 @@ const mapDispatchToProps = {
   getRockets: getRocketsThunk,
 };
 
-const ConnectedRocketsView = connect(
+const ConnectedRocketView = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RocketsView);
+)(RocketView);
 
-export default ConnectedRocketsView;
+export default ConnectedRocketView;
