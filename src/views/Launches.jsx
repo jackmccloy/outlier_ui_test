@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
-import ConnectedView from './ConnectedView';
+
+import { connect } from "react-redux";
+
+import styled from 'styled-components';
+
 import {fetchLaunchesIfNeeded} from "../actions/Launches";
 import Launch from '../components/Launch';
+
+const Section = styled.section`
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+`;
+
+const LaunchesH1 = styled.h1`
+  margin-top: 0;
+  border-bottom: 2px solid #999;
+  color: #666;
+`
 
 class LaunchesView extends Component {
   componentDidMount() {
@@ -20,31 +36,38 @@ class LaunchesView extends Component {
       return <div> NO DATA </div>;
     }
 
-    const launches = [];
-
-    for (let i = 0; i < launchCollection.launches.length; i+=1) {
-      const launch = launchCollection.launches[i];
-
-      launches.push(
-        <Launch {...{
-          key: launch.launch_id,
-          launch
-        }} />
-
+    const launches = launchCollection.launches.map(launch => (
+        <Launch
+          key={launch.flight_number}
+          launch={launch}
+        />
       )
-    }
+    );
 
     return <ul>{launches}</ul>;
   }
 
   render() {
     return (
-      <div>
-        <h2> SpaceX launches </h2>
+      <Section>
+        <LaunchesH1> SpaceX launches </LaunchesH1>
         {this.getContent()}
-      </div>
+      </Section>
     );
   }
 }
 
-export default ConnectedView(LaunchesView, 'launches');
+const mapStateToProps = state => ({
+  launchCollection: state.launchCollection,
+});
+
+const mapDispatchToProps = dispatch => ({
+  dispatch
+});
+
+const ConnectedLaunchesView = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LaunchesView);
+
+export default ConnectedLaunchesView;

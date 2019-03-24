@@ -1,16 +1,36 @@
 import React from 'react';
+
+import styled from 'styled-components';
+
+import {
+  Route,
+  Switch,
+} from 'react-router';
+
 import {
   BrowserRouter as Router,
-  Route
 } from 'react-router-dom';
+
 import Launches from './views/Launches';
+
+import Navigation from './components/Navigation';
+
+const Main = styled.main`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  max-width: 1400px;
+`;
 
 const Routes = () => (
   <Router>
-    <div>
-      <Route exact path="/" component={Launches}/>
-      <Route path="/Launches" component={Launches}/>
-    </div>
+    <Main>
+      <Navigation />
+      <Switch>
+        <Route exact path="/" component={Launches}/>
+        <Route path="/Launches" component={Launches}/>
+      </Switch>
+    </Main>
   </Router>
 );
 
