@@ -9,18 +9,18 @@ import {
 /**
  * Synchronous actions
  */
-const receiveLaunches = launches => ({
+export const receiveLaunches = launches => ({
   type: RECEIVE_LAUNCHES,
   payload: {
     launches,
   }
 });
 
-const getLaunchesRequst = () => ({
+export const getLaunchesRequest = () => ({
   type: REQUEST_LAUNCHES,
 });
 
-const getLaunchesFailure = errorMessage => ({
+export const getLaunchesFailure = errorMessage => ({
   type: REQUEST_LAUNCHES_FAILURE,
   payload: {
     errorMessage,
@@ -37,7 +37,7 @@ export const getLaunchesThunk = (forceRequest = false) => (dispatch, getState) =
     // store, we shouldn't re-fetch unless `forceRequest` is true
     return null;
   }
-  dispatch(getLaunchesRequst());
+  dispatch(getLaunchesRequest());
 
   return launchService.get()
     .then(response => {
