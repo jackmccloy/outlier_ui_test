@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 
 import Launches from './views/Launches';
+import Rockets from './views/Rockets';
 
 import Navigation from './components/Navigation';
 
@@ -29,6 +30,7 @@ const Routes = () => (
       <Switch>
         <Route exact path="/" component={Launches}/>
         <Route path="/Launches" component={Launches}/>
+        <Route path="/Rockets" component={Rockets}/>
       </Switch>
     </Main>
   </Router>
