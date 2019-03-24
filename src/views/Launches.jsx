@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types';
+
 import { connect } from "react-redux";
 
 import styled from 'styled-components';
 
-import {fetchLaunchesIfNeeded} from "../actions/Launches";
+import { getLaunchesThunk } from "../actions/Launches";
 import Launch from '../components/Launch';
 
 const Section = styled.section`
@@ -21,15 +23,19 @@ const LaunchesH1 = styled.h1`
 
 class LaunchesView extends Component {
   componentDidMount() {
-    const { dispatch, launchesCollection } = this.props;
-    fetchLaunchesIfNeeded({ dispatch, launchesCollection });
+    const { getLaunches } = this.props;
+    getLaunches();
   }
 
-  getContent() {
+  launchesArea() {
     const { launchCollection } = this.props;
 
     if (!launchCollection || launchCollection.fetching) {
-      return <div> LOADING </div>;
+      return <div> LOADING... </div>;
+    }
+
+    if (launchCollection.error) {
+      return <div> { launchCollection.error } </div>
     }
 
     if (!launchCollection.launches.length) {
@@ -37,12 +43,11 @@ class LaunchesView extends Component {
     }
 
     const launches = launchCollection.launches.map(launch => (
-        <Launch
-          key={launch.flight_number}
-          launch={launch}
-        />
-      )
-    );
+      <Launch
+        key={launch.flight_number}
+        launch={launch}
+      />
+    ));
 
     return <ul>{launches}</ul>;
   }
@@ -51,19 +56,35 @@ class LaunchesView extends Component {
     return (
       <Section>
         <LaunchesH1> SpaceX launches </LaunchesH1>
-        {this.getContent()}
+        {this.launchesArea()}
       </Section>
     );
   }
+}
+
+LaunchesView.propTypes = {
+  launchCollection: PropTypes.shape({
+    launches: PropTypes.arrayOf(PropTypes.shape({
+      flight_number: PropTypes.number,
+      mission_name: PropTypes.string,
+      rocket: PropTypes.shape({
+        rocket_id: PropTypes.string,
+        rocket_name: PropTypes.string,
+      }),
+    })),
+    fetching: PropTypes.bool,
+    error: PropTypes.string,
+  }).isRequired,
+  getLaunches: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   launchCollection: state.launchCollection,
 });
 
-const mapDispatchToProps = dispatch => ({
-  dispatch
-});
+const mapDispatchToProps = {
+  getLaunches: getLaunchesThunk,
+};
 
 const ConnectedLaunchesView = connect(
   mapStateToProps,

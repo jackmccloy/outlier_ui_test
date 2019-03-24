@@ -1,27 +1,48 @@
 import LaunchService from '../services/LaunchService';
 
-export const ACTIONS = {
-  REQUEST_LAUNCHES: 'REQUEST_LAUNCHES',
-  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES'
-};
+import {
+  REQUEST_LAUNCHES,
+  RECEIVE_LAUNCHES,
+  REQUEST_LAUNCHES_FAILURE,
+} from './constants';
 
-export const requestLaunches = () => ({
-  type: ACTIONS.REQUEST_LAUNCHES
-});
-
-const receiveLaunches = response => ({
-  type: ACTIONS.RECEIVE_LAUNCHES,
+/**
+ * Synchronous actions
+ */
+const receiveLaunches = launches => ({
+  type: RECEIVE_LAUNCHES,
   payload: {
-    launches: response.data
+    launches,
   }
 });
 
-export const fetchLaunches = dispatch => {
-  dispatch(requestLaunches());
-  return LaunchService.get().then(response => dispatch(receiveLaunches(response)));
+const getLaunchesRequst = () => ({
+  type: REQUEST_LAUNCHES,
+});
+
+const getLaunchesFailure = errorMessage => ({
+  type: REQUEST_LAUNCHES_FAILURE,
+  payload: {
+    errorMessage,
+  },
+});
+
+/**
+ * Asynchronous actions
+ */
+export const getLaunchesThunk = (forceRequest = false) => (dispatch, getState) => {
+  const { launchCollection } = getState();
+  if (!forceRequest && !launchCollection.error && (launchCollection.fetching || launchCollection.launches.length)) {
+    // if we're currently fetching the API or already have launches in the
+    // store, we shouldn't re-fetch unless `forceRequest` is true
+    return null;
+  }
+  dispatch(getLaunchesRequst());
+
+  return LaunchService.get()
+    .then(response => {
+      dispatch(receiveLaunches(response.data));
+     }).catch(error => {
+      dispatch(getLaunchesFailure(error.message));      
+    });
 };
-
-const shouldFetchLaunches = launchCollection => !launchCollection || !launchCollection.fetching;
-
-export const fetchLaunchesIfNeeded = ({ dispatch, launchCollection }) =>
-  shouldFetchLaunches(launchCollection) && fetchLaunches(dispatch);
