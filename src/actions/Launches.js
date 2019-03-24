@@ -1,16 +1,16 @@
 import LaunchService from '../services/LaunchService';
 
-export const ACTIONS = {
-  REQUEST_LAUNCHES: 'REQUEST_LAUNCHES',
-  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES'
-};
+import {
+  REQUEST_LAUNCHES,
+  RECEIVE_LAUNCHES,
+} from './constants';
 
 export const requestLaunches = () => ({
-  type: ACTIONS.REQUEST_LAUNCHES
+  type: REQUEST_LAUNCHES
 });
 
 const receiveLaunches = response => ({
-  type: ACTIONS.RECEIVE_LAUNCHES,
+  type: RECEIVE_LAUNCHES,
   payload: {
     launches: response.data
   }
